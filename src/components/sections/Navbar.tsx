@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { nav, profile } from "@/lib/content";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -34,7 +35,7 @@ export function Navbar() {
       >
         <a href="#top" className="group relative flex items-center gap-2 px-3 py-1.5">
           <span className="relative inline-flex h-7 w-7 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br from-violet-500 via-pink-400 to-cyan-400">
-            <span className="text-[11px] font-bold tracking-tight text-black">BP</span>
+            <span className="text-[11px] font-bold tracking-tight text-[#050509]">BP</span>
           </span>
           <span className="text-sm font-medium tracking-wide">
             {profile.name.split(" ")[0]}
@@ -55,23 +56,27 @@ export function Navbar() {
           ))}
         </ul>
 
-        <div className="hidden md:flex">
+        <div className="hidden items-center gap-2 md:flex">
+          <ThemeToggle />
           <a
             href="#contact"
-            className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-white px-4 py-2 text-sm font-medium text-black transition-all hover:bg-white/90"
+            className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-[var(--color-fg)] px-4 py-2 text-sm font-medium text-[var(--color-on-fg)] transition-all hover:opacity-90"
           >
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.9)]" />
             Available for work
           </a>
         </div>
 
-        <button
-          aria-label="Toggle menu"
-          onClick={() => setOpen((v) => !v)}
-          className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 md:hidden"
-        >
-          {open ? <X size={16} /> : <Menu size={16} />}
-        </button>
+        <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
+          <button
+            aria-label="Toggle menu"
+            onClick={() => setOpen((v) => !v)}
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10"
+          >
+            {open ? <X size={16} /> : <Menu size={16} />}
+          </button>
+        </div>
       </nav>
 
       <AnimatePresence>

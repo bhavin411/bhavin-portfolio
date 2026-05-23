@@ -45,7 +45,7 @@ export function MagneticButton({
     "relative inline-flex items-center justify-center rounded-full px-7 py-3.5 text-sm font-medium tracking-wide transition-colors";
   const styles =
     variant === "primary"
-      ? "bg-white text-black hover:bg-white/90"
+      ? "bg-[var(--color-fg)] text-[var(--color-on-fg)] hover:opacity-90"
       : "glass text-white hover:bg-white/[0.08]";
 
   const inner = (

@@ -66,7 +66,13 @@ export function About() {
                     className="object-cover"
                     priority
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg)] via-[var(--color-bg)]/30 to-transparent" />
+                  <div
+                    className="absolute inset-x-0 bottom-0 h-2/5"
+                    style={{
+                      background:
+                        "linear-gradient(to top, var(--color-surface) 0%, color-mix(in oklab, var(--color-surface) 60%, transparent) 55%, transparent 100%)",
+                    }}
+                  />
 
                   {/* Floating glow */}
                   <motion.div

@@ -2,8 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
+import { useTheme } from "next-themes";
 
 export function CustomCursor() {
+  const { resolvedTheme } = useTheme();
+  const isLight = resolvedTheme === "light";
   const x = useMotionValue(-100);
   const y = useMotionValue(-100);
 
@@ -49,7 +52,7 @@ export function CustomCursor() {
         style={{ x, y }}
       >
         <div className="-translate-x-1/2 -translate-y-1/2">
-          <div className="h-1.5 w-1.5 rounded-full bg-white" />
+          <div className="h-1.5 w-1.5 rounded-full" style={{ background: "#fff" }} />
         </div>
       </motion.div>
 
@@ -62,8 +65,16 @@ export function CustomCursor() {
           animate={{
             width: hover ? 56 : 34,
             height: hover ? 56 : 34,
-            borderColor: hover ? "rgba(167,139,250,0.9)" : "rgba(255,255,255,0.35)",
-            backgroundColor: hover ? "rgba(167,139,250,0.10)" : "rgba(255,255,255,0)",
+            borderColor: hover
+              ? "rgba(167,139,250,0.9)"
+              : isLight
+                ? "rgba(10,10,25,0.45)"
+                : "rgba(255,255,255,0.35)",
+            backgroundColor: hover
+              ? "rgba(167,139,250,0.10)"
+              : isLight
+                ? "rgba(10,10,25,0.04)"
+                : "rgba(255,255,255,0)",
           }}
           transition={{ type: "spring", stiffness: 260, damping: 22 }}
           className="-translate-x-1/2 -translate-y-1/2 rounded-full border backdrop-blur-sm"

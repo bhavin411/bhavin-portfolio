@@ -1,0 +1,9 @@
+{
+  "owner": {
+    "username": "<your-github-username>",
+    "email": "bhavinparmar2014@gmail.com"
+  },
+  "record": {
+    "CNAME": "cname.vercel-dns.com"
+  }
+}
